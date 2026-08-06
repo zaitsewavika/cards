@@ -26,6 +26,13 @@ export const SUIT_SYMBOLS: Readonly<Record<Suit, string>> = {
   spades: '♠',
 }
 
+export const SUIT_LABELS: Readonly<Record<Suit, string>> = {
+  clubs: 'трефы',
+  diamonds: 'бубны',
+  hearts: 'черви',
+  spades: 'пики',
+}
+
 export const RANK_LABELS: Readonly<Record<Rank, string>> = {
   '6': '6',
   '7': '7',

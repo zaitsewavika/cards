@@ -1,0 +1,147 @@
+.card {
+  --card-color: #17191d;
+
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  width: 5rem;
+  aspect-ratio: 5 / 7;
+  padding: 0.45rem;
+  overflow: hidden;
+  color: var(--card-color);
+  background: #ffffff;
+  border: 1px solid #c8cbd1;
+  border-radius: 0.55rem;
+  box-shadow:
+    0 1px 2px rgb(17 24 39 / 10%),
+    0 5px 14px rgb(17 24 39 / 12%);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    transform 120ms ease,
+    border-color 120ms ease,
+    box-shadow 120ms ease,
+    background-color 120ms ease,
+    opacity 120ms ease;
+}
+
+.card:hover {
+  z-index: 1;
+  border-color: #7c838f;
+  box-shadow:
+    0 2px 4px rgb(17 24 39 / 12%),
+    0 8px 20px rgb(17 24 39 / 18%);
+  transform: translateY(-2px);
+}
+
+.card:active {
+  box-shadow: 0 1px 4px rgb(17 24 39 / 16%);
+  transform: translateY(0) scale(0.98);
+}
+
+.card:focus-visible {
+  z-index: 2;
+  outline: 3px solid #1769e0;
+  outline-offset: 3px;
+}
+
+.black {
+  --card-color: #17191d;
+}
+
+.red {
+  --card-color: #bd1e35;
+}
+
+.trump {
+  border-color: #a87519;
+  box-shadow:
+    inset 0 0 0 2px #f2d27d,
+    0 1px 2px rgb(17 24 39 / 10%),
+    0 5px 14px rgb(17 24 39 / 12%);
+}
+
+.corner {
+  position: absolute;
+  top: 0.42rem;
+  left: 0.45rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.86;
+}
+
+.cornerBottom {
+  inset: auto 0.45rem 0.42rem auto;
+  transform: rotate(180deg);
+}
+
+.rank {
+  font-size: 1rem;
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+.cornerSuit {
+  margin-top: 0.15rem;
+  font-size: 0.9rem;
+}
+
+.centerSuit {
+  font-size: 2.65rem;
+  line-height: 1;
+}
+
+.discarded {
+  color: #555960;
+  background: #ececea;
+  border-color: #777c84;
+  opacity: 0.58;
+}
+
+.discarded::before,
+.discarded::after {
+  position: absolute;
+  z-index: 2;
+  width: 135%;
+  height: 0.2rem;
+  background: #34373c;
+  border-radius: 999px;
+  content: '';
+  pointer-events: none;
+}
+
+.discarded::before {
+  transform: rotate(36deg);
+}
+
+.discarded::after {
+  transform: rotate(-36deg);
+}
+
+.discardLabel {
+  position: absolute;
+  z-index: 3;
+  display: none;
+  padding: 0.2rem 0.35rem;
+  color: #202226;
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  background: rgb(255 255 255 / 92%);
+  border: 1px solid #555960;
+  border-radius: 0.2rem;
+  transform: rotate(-8deg);
+}
+
+.discarded .discardLabel {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
