@@ -1,18 +1,22 @@
 .controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
 }
 
 .controls button {
-  min-height: 2.45rem;
-  padding: 0.45rem 0.85rem;
+  min-height: 2.35rem;
+  padding: 0.4rem 0.6rem;
   color: #283029;
   font-weight: 750;
   background: #fff;
   border: 1px solid #aeb5af;
   border-radius: 0.5rem;
   cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease;
 }
 
 .controls button:hover:not(:disabled) {
@@ -26,9 +30,9 @@
 }
 
 .controls button:disabled {
-  color: #929893;
-  background: #eceeec;
-  border-color: #d4d8d4;
+  color: #606862;
+  background: #e2e6e2;
+  border-color: #aeb5af;
   cursor: not-allowed;
 }
 
@@ -41,4 +45,10 @@
 .controls .reset:hover:not(:disabled) {
   background: #71352a;
   border-color: #602b22;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .controls button {
+    transition: none;
+  }
 }

@@ -7,12 +7,12 @@
   place-items: center;
   width: var(--card-width, 5rem);
   aspect-ratio: 5 / 7;
-  padding: 0.45rem;
+  padding: calc(var(--card-width, 5rem) * 0.09);
   overflow: hidden;
   color: var(--card-color);
   background: #ffffff;
   border: 1px solid #c8cbd1;
-  border-radius: 0.55rem;
+  border-radius: clamp(0.38rem, calc(var(--card-width, 5rem) * 0.11), 0.55rem);
   box-shadow:
     0 1px 2px rgb(17 24 39 / 10%),
     0 5px 14px rgb(17 24 39 / 12%);
@@ -26,7 +26,7 @@
     opacity 120ms ease;
 }
 
-.card:hover {
+.card:hover:not(:disabled) {
   z-index: 1;
   border-color: #7c838f;
   box-shadow:
@@ -73,8 +73,8 @@
 
 .corner {
   position: absolute;
-  top: 0.42rem;
-  left: 0.45rem;
+  top: calc(var(--card-width, 5rem) * 0.08);
+  left: calc(var(--card-width, 5rem) * 0.09);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,31 +82,31 @@
 }
 
 .cornerBottom {
-  inset: auto 0.45rem 0.42rem auto;
+  inset: auto calc(var(--card-width, 5rem) * 0.09)
+    calc(var(--card-width, 5rem) * 0.08) auto;
   transform: rotate(180deg);
 }
 
 .rank {
-  font-size: 1rem;
+  font-size: clamp(0.76rem, calc(var(--card-width, 5rem) * 0.2), 1rem);
   font-weight: 750;
   letter-spacing: -0.04em;
 }
 
 .cornerSuit {
-  margin-top: 0.15rem;
-  font-size: 0.9rem;
+  margin-top: 0.1rem;
+  font-size: clamp(0.7rem, calc(var(--card-width, 5rem) * 0.18), 0.9rem);
 }
 
 .centerSuit {
-  font-size: 2.65rem;
+  font-size: clamp(1.85rem, calc(var(--card-width, 5rem) * 0.53), 2.65rem);
   line-height: 1;
 }
 
 .discarded {
-  color: #555960;
-  background: #ececea;
-  border-color: #777c84;
-  opacity: 0.58;
+  color: #41464c;
+  background: #daddda;
+  border-color: #5f666e;
 }
 
 .discarded::before,
@@ -136,7 +136,7 @@
   display: none;
   padding: 0.2rem 0.35rem;
   color: #202226;
-  font-size: 0.68rem;
+  font-size: clamp(0.55rem, calc(var(--card-width, 5rem) * 0.14), 0.68rem);
   font-weight: 800;
   line-height: 1;
   text-transform: uppercase;

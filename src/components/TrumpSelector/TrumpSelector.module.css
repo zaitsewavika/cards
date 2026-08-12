@@ -15,8 +15,8 @@
 }
 
 .options {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.4rem;
 }
 
@@ -31,6 +31,10 @@
   border-radius: 0.5rem;
   box-shadow: 0 1px 2px rgb(34 48 38 / 8%);
   cursor: pointer;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    box-shadow 120ms ease;
 }
 
 .option:hover {
@@ -65,5 +69,11 @@
 }
 
 .red {
-  color: #bd1e35;
+  color: #a8172c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .option {
+    transition: none;
+  }
 }
