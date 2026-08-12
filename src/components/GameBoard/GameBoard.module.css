@@ -1,0 +1,105 @@
+.board {
+  --board-card-width: clamp(3.25rem, 5.2vh, 4rem);
+  --board-column-gap: clamp(0.35rem, 1vw, 0.7rem);
+  --board-row-gap: 0.25rem;
+
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.65rem;
+  background: #f0f2f0;
+  border: 1px solid #d2d7d2;
+  border-radius: 0.9rem;
+  box-shadow: 0 0.75rem 2rem rgb(34 48 38 / 10%);
+}
+
+.scroller {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, var(--board-card-width));
+  gap: var(--board-row-gap) var(--board-column-gap);
+  min-width: max-content;
+}
+
+.headerRow,
+.cardRow {
+  display: contents;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.6rem;
+  padding: 0.3rem 0.2rem;
+  column-gap: 0.25rem;
+  color: #3e4540;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.header > :not(.trumpLabel) {
+  white-space: nowrap;
+}
+
+.trumpLabel {
+  flex-basis: 100%;
+  color: #72500e;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.redSuit {
+  color: #bd1e35;
+  font-size: 1rem;
+}
+
+.blackSuit {
+  color: #17191d;
+  font-size: 1rem;
+}
+
+.cardCell {
+  display: grid;
+  place-items: center;
+  padding: 0.12rem;
+  border-radius: 0.45rem;
+}
+
+.cardCell > button {
+  --card-width: var(--board-card-width);
+}
+
+.trumpColumn {
+  background: #fff3cf;
+  border-left: 2px solid #d2a33f;
+  border-right: 2px solid #d2a33f;
+}
+
+.header.trumpColumn {
+  border-top: 2px solid #d2a33f;
+  border-radius: 0.55rem 0.55rem 0 0;
+}
+
+.cardRow:last-child .trumpColumn {
+  border-bottom: 2px solid #d2a33f;
+  border-radius: 0 0 0.55rem 0.55rem;
+}
+
+@media (width <= 32rem) {
+  .board {
+    --board-card-width: 3.25rem;
+
+    width: 100%;
+  }
+}
