@@ -1,14 +1,13 @@
-import { useReducer } from 'react'
 import { GameControls } from '../components/GameControls/GameControls.tsx'
 import { GameBoard } from '../components/GameBoard/GameBoard.tsx'
 import { GameStatus } from '../components/GameStatus/GameStatus.tsx'
 import { TrumpSelector } from '../components/TrumpSelector/TrumpSelector.tsx'
-import { gameReducer, initialGameState } from '../game/gameReducer.ts'
 import { canUndo, getRemainingCardCount } from '../game/selectors.ts'
+import { usePersistedGame } from '../hooks/usePersistedGame.ts'
 import styles from './App.module.css'
 
 function App() {
-  const [state, dispatch] = useReducer(gameReducer, initialGameState)
+  const [state, dispatch] = usePersistedGame()
   const discardedCount = state.discardedIds.length
 
   function handleReset() {
