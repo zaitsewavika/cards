@@ -16,7 +16,8 @@ function createInitialState(): GameState {
   return {
     discardedIds: snapshot.discardedIds,
     trumpSuit: snapshot.trumpSuit,
-    history: [],
+    isTurnActive: snapshot.isTurnActive,
+    pendingTurnIds: snapshot.pendingTurnIds,
   }
 }
 
@@ -31,8 +32,15 @@ export function usePersistedGame() {
     saveGameSnapshot({
       discardedIds: state.discardedIds,
       trumpSuit: state.trumpSuit,
+      isTurnActive: state.isTurnActive,
+      pendingTurnIds: state.pendingTurnIds,
     })
-  }, [state.discardedIds, state.trumpSuit])
+  }, [
+    state.discardedIds,
+    state.isTurnActive,
+    state.pendingTurnIds,
+    state.trumpSuit,
+  ])
 
   return [state, dispatch] as const
 }

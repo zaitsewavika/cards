@@ -12,16 +12,19 @@ import styles from './GameBoard.module.css'
 export interface GameBoardProps {
   readonly trumpSuit: Suit
   readonly discardedIds: readonly CardId[]
+  readonly pendingTurnIds: readonly CardId[]
   readonly onToggleCard: (cardId: CardId) => void
 }
 
 export function GameBoard({
   trumpSuit,
   discardedIds,
+  pendingTurnIds,
   onToggleCard,
 }: GameBoardProps) {
   const orderedSuits = getOrderedSuits(trumpSuit)
   const discardedCardIds = new Set(discardedIds)
+  const pendingCardIds = new Set(pendingTurnIds)
 
   return (
     <section className={styles.board} aria-label="Игровое поле">
@@ -77,6 +80,7 @@ export function GameBoard({
                     <Card
                       card={card}
                       discarded={discardedCardIds.has(card.id)}
+                      pending={pendingCardIds.has(card.id)}
                       isTrump={suit === trumpSuit}
                       onToggle={onToggleCard}
                     />
