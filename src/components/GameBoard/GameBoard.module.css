@@ -1,15 +1,16 @@
 .board {
-  --board-card-width: clamp(3.25rem, 5.2vh, 4rem);
-  --board-column-gap: clamp(0.35rem, 1vw, 0.7rem);
-  --board-row-gap: 0.25rem;
+  --board-card-width: clamp(2.75rem, 4.6vh, 3.65rem);
+  --board-column-gap: clamp(0.25rem, 0.8vw, 0.55rem);
+  --board-row-gap: clamp(0.12rem, 0.35vh, 0.25rem);
 
   width: fit-content;
   max-width: 100%;
-  padding: 0.65rem;
-  background: #f0f2f0;
-  border: 1px solid #d2d7d2;
-  border-radius: 0.9rem;
-  box-shadow: 0 0.75rem 2rem rgb(34 48 38 / 10%);
+  margin-inline: auto;
+  padding: 0.55rem;
+  background: #e8ece8;
+  border: 1px solid #c5ccc6;
+  border-radius: 0.8rem;
+  box-shadow: 0 0.55rem 1.6rem rgb(34 48 38 / 12%);
 }
 
 .scroller {
@@ -36,13 +37,13 @@
   align-content: center;
   align-items: center;
   justify-content: center;
-  min-height: 2.6rem;
-  padding: 0.3rem 0.2rem;
-  column-gap: 0.25rem;
-  color: #3e4540;
-  font-size: 0.7rem;
-  font-weight: 700;
-  line-height: 1.1;
+  min-height: 2.35rem;
+  padding: 0.22rem 0.12rem;
+  column-gap: 0.2rem;
+  color: #353c37;
+  font-size: clamp(0.62rem, calc(var(--board-card-width) * 0.19), 0.72rem);
+  font-weight: 750;
+  line-height: 1.05;
   text-align: center;
   text-transform: capitalize;
 }
@@ -53,14 +54,14 @@
 
 .trumpLabel {
   flex-basis: 100%;
-  color: #72500e;
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
+  color: #68470b;
+  font-size: 0.58rem;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
 .redSuit {
-  color: #bd1e35;
+  color: #a8172c;
   font-size: 1rem;
 }
 
@@ -72,8 +73,8 @@
 .cardCell {
   display: grid;
   place-items: center;
-  padding: 0.12rem;
-  border-radius: 0.45rem;
+  padding-block: 0.1rem;
+  border-radius: 0.4rem;
 }
 
 .cardCell > button {
@@ -81,25 +82,23 @@
 }
 
 .trumpColumn {
-  background: #fff3cf;
-  border-left: 2px solid #d2a33f;
-  border-right: 2px solid #d2a33f;
+  background: #fff0bd;
+  border-left: 2px solid #bd8c27;
+  border-right: 2px solid #bd8c27;
 }
 
 .header.trumpColumn {
-  border-top: 2px solid #d2a33f;
-  border-radius: 0.55rem 0.55rem 0 0;
+  border-top: 2px solid #bd8c27;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .cardRow:last-child .trumpColumn {
-  border-bottom: 2px solid #d2a33f;
-  border-radius: 0 0 0.55rem 0.55rem;
+  border-bottom: 2px solid #bd8c27;
+  border-radius: 0 0 0.5rem 0.5rem;
 }
 
-@media (width <= 32rem) {
+@media (width < 46rem) {
   .board {
-    --board-card-width: 3.25rem;
-
-    width: 100%;
+    --board-card-width: clamp(2.75rem, 7vh, 3.65rem);
   }
 }

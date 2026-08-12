@@ -25,6 +25,12 @@ body {
   min-width: 20rem;
   min-height: 100vh;
   margin: 0;
+  overflow-x: hidden;
+}
+
+::selection {
+  color: #fff;
+  background: #1769e0;
 }
 
 button,

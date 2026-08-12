@@ -62,42 +62,48 @@ function App() {
 
   return (
     <main className={styles.app}>
-      <header className={styles.header}>
-        <div className={styles.intro}>
-          <h1>Cards</h1>
-          <p className={styles.lead}>
-            Помощник для учёта карт в игре «Дурак».
-          </p>
-        </div>
-        <GameStatus
-          remainingCount={getRemainingCardCount(state)}
-          discardedCount={discardedCount}
-          pendingCount={pendingCount}
-          isTurnActive={state.isTurnActive}
-          trumpSuit={state.trumpSuit}
-        />
-        <TrumpSelector
-          value={state.trumpSuit}
-          onChange={(suit) => dispatch({ type: 'set-trump', suit })}
-        />
-        <GameControls
-          isTurnActive={state.isTurnActive}
-          canResolveTurn={state.isTurnActive && pendingCount > 0}
-          onStartTurn={() => dispatch({ type: 'start-turn' })}
-          onFinishTurn={() => dispatch({ type: 'finish-turn' })}
-          onTakeCards={() => dispatch({ type: 'take-cards' })}
-          onReset={handleReset}
-        />
+      <header className={styles.brand}>
+        <h1>Cards</h1>
+        <p className={styles.lead}>
+          Помощник для учёта карт в игре «Дурак».
+        </p>
       </header>
-      <p className={styles.notice} aria-live="polite" aria-atomic="true">
-        {notice === null ? null : <span key={notice.id}>{notice.text}</span>}
-      </p>
-      <GameBoard
-        trumpSuit={state.trumpSuit}
-        discardedIds={state.discardedIds}
-        pendingTurnIds={state.pendingTurnIds}
-        onToggleCard={handleToggleCard}
-      />
+      <div className={styles.workspace}>
+        <aside className={styles.panel} aria-label="Панель партии">
+          <p className={styles.instruction}>
+            Начните ход и выберите разыгранные карты. Затем нажмите «Конец
+            хода» или «Взял».
+          </p>
+          <GameStatus
+            remainingCount={getRemainingCardCount(state)}
+            discardedCount={discardedCount}
+            pendingCount={pendingCount}
+            isTurnActive={state.isTurnActive}
+            trumpSuit={state.trumpSuit}
+          />
+          <TrumpSelector
+            value={state.trumpSuit}
+            onChange={(suit) => dispatch({ type: 'set-trump', suit })}
+          />
+          <GameControls
+            isTurnActive={state.isTurnActive}
+            canResolveTurn={state.isTurnActive && pendingCount > 0}
+            onStartTurn={() => dispatch({ type: 'start-turn' })}
+            onFinishTurn={() => dispatch({ type: 'finish-turn' })}
+            onTakeCards={() => dispatch({ type: 'take-cards' })}
+            onReset={handleReset}
+          />
+          <p className={styles.notice} aria-live="polite" aria-atomic="true">
+            {notice === null ? null : <span key={notice.id}>{notice.text}</span>}
+          </p>
+        </aside>
+        <GameBoard
+          trumpSuit={state.trumpSuit}
+          discardedIds={state.discardedIds}
+          pendingTurnIds={state.pendingTurnIds}
+          onToggleCard={handleToggleCard}
+        />
+      </div>
     </main>
   )
 }
