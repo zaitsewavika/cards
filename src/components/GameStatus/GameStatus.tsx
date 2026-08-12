@@ -5,12 +5,16 @@ import styles from './GameStatus.module.css'
 export interface GameStatusProps {
   readonly remainingCount: number
   readonly discardedCount: number
+  readonly pendingCount: number
+  readonly isTurnActive: boolean
   readonly trumpSuit: Suit
 }
 
 export function GameStatus({
   remainingCount,
   discardedCount,
+  pendingCount,
+  isTurnActive,
   trumpSuit,
 }: GameStatusProps) {
   return (
@@ -22,6 +26,14 @@ export function GameStatus({
       <div className={styles.item}>
         <dt>В бито</dt>
         <dd>{discardedCount}</dd>
+      </div>
+      <div className={styles.item}>
+        <dt>В текущем ходе</dt>
+        <dd>{pendingCount} из 12</dd>
+      </div>
+      <div className={styles.item}>
+        <dt>Ход</dt>
+        <dd>{isTurnActive ? 'Идёт' : 'Не начат'}</dd>
       </div>
       <div className={styles.item}>
         <dt>Козырь</dt>

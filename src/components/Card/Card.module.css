@@ -62,6 +62,15 @@
     0 5px 14px rgb(17 24 39 / 12%);
 }
 
+.pending {
+  background: #e8f1ff;
+  border-color: #1769e0;
+  box-shadow:
+    inset 0 0 0 3px #79aaf0,
+    0 4px 14px rgb(23 105 224 / 24%);
+  transform: translateY(-2px);
+}
+
 .corner {
   position: absolute;
   top: 0.42rem;
@@ -120,7 +129,8 @@
   transform: rotate(-36deg);
 }
 
-.discardLabel {
+.discardLabel,
+.pendingLabel {
   position: absolute;
   z-index: 3;
   display: none;
@@ -138,6 +148,25 @@
 
 .discarded .discardLabel {
   display: block;
+}
+
+.pendingLabel {
+  color: #0e468f;
+  background: rgb(239 246 255 / 94%);
+  border-color: #1769e0;
+  transform: rotate(-5deg);
+}
+
+.pending .pendingLabel {
+  display: block;
+}
+
+.card:disabled {
+  cursor: not-allowed;
+}
+
+.card:disabled:hover {
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

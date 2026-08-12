@@ -30,3 +30,11 @@
   font-size: 1rem;
   line-height: 1.45;
 }
+
+.notice {
+  min-height: 1.35rem;
+  margin: -0.4rem 0 0.5rem;
+  color: #824033;
+  font-size: 0.85rem;
+  font-weight: 750;
+}
