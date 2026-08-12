@@ -1,0 +1,44 @@
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.controls button {
+  min-height: 2.45rem;
+  padding: 0.45rem 0.85rem;
+  color: #283029;
+  font-weight: 750;
+  background: #fff;
+  border: 1px solid #aeb5af;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.controls button:hover:not(:disabled) {
+  background: #f2f5f2;
+  border-color: #747d75;
+}
+
+.controls button:focus-visible {
+  outline: 3px solid #1769e0;
+  outline-offset: 2px;
+}
+
+.controls button:disabled {
+  color: #929893;
+  background: #eceeec;
+  border-color: #d4d8d4;
+  cursor: not-allowed;
+}
+
+.controls .reset {
+  color: #fff;
+  background: #824033;
+  border-color: #71352a;
+}
+
+.controls .reset:hover:not(:disabled) {
+  background: #71352a;
+  border-color: #602b22;
+}

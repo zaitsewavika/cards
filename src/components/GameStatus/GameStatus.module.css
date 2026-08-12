@@ -1,0 +1,30 @@
+.status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.item {
+  min-width: 6rem;
+  padding: 0.55rem 0.7rem;
+  background: #fff;
+  border: 1px solid #d5d9d6;
+  border-radius: 0.55rem;
+}
+
+.item dt {
+  color: #69706a;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.item dd {
+  margin: 0.15rem 0 0;
+  color: #242a25;
+  font-size: 0.95rem;
+  font-weight: 750;
+  text-transform: capitalize;
+}
