@@ -7,6 +7,13 @@ import {
 } from './gameReducer.ts'
 
 describe('gameReducer turn flow', () => {
+  it('starts an empty turn manually', () => {
+    expect(gameReducer(initialGameState, { type: 'start-turn' })).toEqual({
+      ...initialGameState,
+      isTurnActive: true,
+    })
+  })
+
   it('produces the same selection after manual and automatic turn start', () => {
     const cardId = CARDS[0].id
     const automatic = gameReducer(initialGameState, {
@@ -115,5 +122,18 @@ describe('gameReducer turn flow', () => {
 
     expect(withTrump.pendingTurnIds).toEqual(selected.pendingTurnIds)
     expect(gameReducer(withTrump, { type: 'reset' })).toEqual(initialGameState)
+  })
+
+  it('hydrates confirmed and pending cards from a snapshot', () => {
+    const snapshot = {
+      discardedIds: [CARDS[0].id],
+      trumpSuit: 'diamonds' as const,
+      isTurnActive: true,
+      pendingTurnIds: [CARDS[1].id],
+    }
+
+    expect(
+      gameReducer(initialGameState, { type: 'hydrate', snapshot }),
+    ).toEqual(snapshot)
   })
 })
